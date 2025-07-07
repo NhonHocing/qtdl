@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FutaBus - Đặt vé xe trực tuyến</title>
+  <link rel="icon" type="image/png" href="img/gheday.png">
+  <title>Gheday - Hệ thống đặt Ghe du lịch chợ nổi Cái Răng trực tuyến</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
   <style>
     .navbar { padding: 1rem; }
     .hero {
@@ -31,22 +34,45 @@
       margin-top: 60px;
       border-top: 1px solid #ddd;
     }
+    .icon-img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;     /* Giữ tỷ lệ gốc ảnh */
+        border-radius: 8px;      /* Bo nhẹ ảnh */
+        background-color: #f8f9fa; /* Màu nền nhẹ sau ảnh nếu ảnh nhỏ hoặc trong suốt */
+        padding: 6px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .navbar-nav .nav-link {
+      color: #007bff !important; /* xanh dương Bootstrap hoặc thay mã theo màu logo */
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #0056b3 !important; /* xanh đậm hơn khi hover hoặc đang active */
+      text-decoration: underline;
+    }
+
   </style>
 </head>
 <body>
-
+  <!-- <a href="lich_trinh.html" class="nav-link">Lịch Trình</a> -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container">
       <a class="navbar-brand" href="#">
-        <img src="public/Logo_1.jpg" alt="FutaBus" style="height: 50px;">
+        <img src="img/Logo_1.png" alt="Gheday" style="height: 50px;">
       </a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="navMenu" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a href="#" class="nav-link">Chuyến xe</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Tuyến đường</a></li>
+          <li class="nav-item">
+            <a href="#" class="nav-link active text-decoration-underline">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a href="lich_trinh.html" class="nav-link">Lịch trình</a>
+          </li>
           <li class="nav-item"><a href="#" class="nav-link">Tin tức</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Liên hệ</a></li>
           <li class="nav-item ms-lg-3"><a href="#" class="btn btn-primary">Đăng nhập</a></li>
@@ -55,55 +81,62 @@
     </div>
   </nav>
 
+
   <div class="hero">
     <div class="search-box">
       <form class="d-flex flex-wrap gap-2 justify-content-center">
         <select class="form-select w-auto" required>
-            <option>Điểm đi</option>
+          <option disabled selected>Điểm đón khách</option>
+          <option value="benninhkieu">Bến Ninh Kiều</option>
+          <option value="choanbinh">Chợ An Bình</option>
         </select>
 
         <select class="form-select w-auto" required>
-            <option>Điểm đến</option>
+          <option disabled selected>Điểm đến</option>
+          <option value="3diadiem">Chợ nổi Cái Răng và 3 địa điểm</option>
+          <option value="5diadiem">Chợ nổi Cái Răng và 7 địa điểm</option>
         </select>
 
         <input type="date" class="form-control w-auto" required>
 
         <button type="submit" class="btn btn-primary">Tìm vé</button>
-        </form>
+      </form>
+
 
     </div>
   </div>
 
-  <section class="container services py-5">
+
+  <section class="container-fluid services py-5" style="background-color: #f5f5f5;">
     <div class="text-center mb-4">
-      <h2>Tại sao chọn FutaBus?</h2>
+      <h2>Tại sao chọn Gheday</h2>
       <p class="text-muted">Giải đáp thắc mắc, để bạn tự tin đặt vé</p>
     </div>
     <div class="row g-4">
       <div class="col-md-3">
         <div class="card text-center p-3">
-          <img src="https://via.placeholder.com/80" class="mx-auto" alt="Icon 1">
-          <h5 class="mt-3">Đa dạng tuyến xe</h5>
-          <p class="text-muted">Hơn 1000+ tuyến cả nước.</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center p-3">
-          <img src="https://via.placeholder.com/80" class="mx-auto" alt="Icon 2">
+          <i class="bi bi-currency-dollar" style="font-size: 2rem; color: green;"></i>
           <h5 class="mt-3">Giá cạnh tranh</h5>
           <p class="text-muted">Giá vé tốt, cam kết rõ ràng.</p>
         </div>
       </div>
       <div class="col-md-3">
         <div class="card text-center p-3">
-          <img src="https://via.placeholder.com/80" class="mx-auto" alt="Icon 3">
+          <i class="bi bi-compass" style="font-size: 2rem; color: orange;"></i>
+          <h5 class="mt-3">Đa dạng loại ghe</h5>
+          <p class="text-muted">Hệ thống có hơn 10+ mẫu tàu sẵn sàng phục vụ quý khách</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center p-3">
+          <i class="bi bi-credit-card" style="font-size: 2rem; color: blue;"></i>
           <h5 class="mt-3">Thanh toán nhanh</h5>
           <p class="text-muted">Hỗ trợ chuyển khoản, ví điện tử.</p>
         </div>
       </div>
       <div class="col-md-3">
         <div class="card text-center p-3">
-          <img src="https://via.placeholder.com/80" class="mx-auto" alt="Icon 4">
+          <i class="bi bi-telephone-forward" style="font-size: 2rem; color: red;"></i>
           <h5 class="mt-3">Hỗ trợ 24/7</h5>
           <p class="text-muted">Tổng đài chăm sóc khách hàng.</p>
         </div>
@@ -111,37 +144,39 @@
     </div>
   </section>
 
-  <section class="container py-5">
+
+  <section class="container-fluid services py-5" style="background-color: #f5f5f5;">
+
     <div class="text-center mb-4">
       <h2>Tin tức & Khuyến mãi</h2>
     </div>
     <div class="row g-4">
       <div class="col-md-4">
         <div class="card h-100">
-          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Tin 1">
+          <img src="img/nhiều tàu.jpg" class="card-img-top" alt="Tin 1">
           <div class="card-body">
             <h5 class="card-title">Ưu đãi mùa hè</h5>
-            <p class="card-text">Giảm đến 30% cho các tuyến Sài Gòn – Đà Lạt.</p>
+            <p class="card-text">Giảm đến 30% cho các khách là học sinh dưới 15 tuổi.</p>
             <a href="#" class="link-primary">Xem chi tiết →</a>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="card h-100">
-          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Tin 2">
+          <img src="img/mùa nhãn.jpg" class="card-img-top" alt="Tin 2">
           <div class="card-body">
-            <h5 class="card-title">Mở thêm tuyến mới</h5>
-            <p class="card-text">Thêm tuyến Hà Nội – Đà Nẵng tiện lợi cho bạn.</p>
+            <h5 class="card-title">Đặc sản ngay mùa</h5>
+            <p class="card-text">Nhãn vườn ngon ngọt vị phù sa.</p>
             <a href="#" class="link-primary">Xem chi tiết →</a>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="card h-100">
-          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Tin 3">
+          <img src="img/đờn ca.webp" class="card-img-top" alt="Tin 3">
           <div class="card-body">
-            <h5 class="card-title">Chính sách đổi vé</h5>
-            <p class="card-text">Lên đến mức 24 giờ trước chuyến.</p>
+            <h5 class="card-title">Đờn ca tài tử nam bộ</h5>
+            <p class="card-text">Câu lạc bộ đờn ca tài tử biểu diễn vào sáng thứ 7 và chủ nhật hàng tuần.</p>
             <a href="#" class="link-primary">Xem chi tiết →</a>
           </div>
         </div>
@@ -149,11 +184,12 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6">
-          <p>&copy; 2025 FutaBus. Cung cấp dịch vụ đặt vé xe trực tuyến.</p>
+          <p>&copy; 2025 Gheday cung cấp dịch vị đặt ghe trực tuyến.</p>
         </div>
         <div class="col-md-6 text-md-end">
           <a href="#" class="text-decoration-none me-3">Chính sách</a>

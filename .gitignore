@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+*.env
+*.pot
+*.pyc
+*.pyo
+
+.venv/
+# Ignore all content in mysql_data except .gitkeep
+mysql_data/*
+!mysql_data/.gitkeep
+
+
+# Django
+*.db
+local_settings.py
+db.sqlite3
+staticfiles/
+
+# VSCode / IDEs
+.vscode/
+.idea/
+*.swp
+*~

@@ -1,0 +1,44 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+*.pyo
+
+# Virtual env
+venv/
+env/
+ENV/
+.venv/
+
+# Git
+.git/
+.gitignore
+
+# Logs and DB
+*.log
+*.sqlite3
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output
+build/
+dist/
+*.tgz
+*.tar.gz
+
+# Media/uploads (optional)
+media/
+staticfiles/
+
+# Docker stuff (avoid nesting docker files in copy)
+docker-compose.override.yml
+.dockerignore

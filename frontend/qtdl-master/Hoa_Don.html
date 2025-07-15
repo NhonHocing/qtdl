@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hóa đơn - Quản lý khách sạn</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/Hoa_Don.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Hotel Management</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="Dashboard.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+                <li><a href="Danh_Sach.html"><i class="fas fa-list"></i> Danh sách phòng</a></li>
+                <li><a href="Dat_Phong.html"><i class="fas fa-calendar-check"></i> Đặt phòng</a></li>
+                <li class="active"><a href="Hoa_Don.html"><i class="fas fa-file-invoice"></i> Hóa đơn</a></li>
+                <li><a href="Thong_Ke.html"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
+                <li><a href="Danh_Muc.html"><i class="fas fa-th-list"></i> Danh mục</a></li>
+                <li><a href="Xuat_Excel.html"><i class="fas fa-file-export"></i> Xuất Excel</a></li>
+            </ul>
+            <div class="user-info">
+                <span id="username">Admin</span>
+                <a href="Xac_Thuc.html" class="logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="header-actions">
+                <h1><i class="fas fa-file-invoice"></i> Quản lý hóa đơn</h1>
+                <button id="btnTaoMoi" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Tạo hóa đơn mới
+                </button>
+            </div>
+
+            <div class="form-container" id="formContainer">
+                <h2><i class="fas fa-edit"></i> <span id="formTitle">Thông tin hóa đơn</span></h2>
+                <form id="formHoaDon">
+                    <input type="hidden" id="maHD">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="maKhachHang">Mã khách hàng</label>
+                            <select id="maKhachHang" class="form-control" required>
+                                <option value="">Chọn khách hàng</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="maPhong">Phòng</label>
+                            <select id="maPhong" class="form-control" required>
+                                <option value="">Chọn phòng</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ngayLap">Ngày lập</label>
+                            <input type="date" id="ngayLap" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tongTien">Tổng tiền (VND)</label>
+                            <input type="number" id="tongTien" class="form-control" required readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ghiChu">Ghi chú</label>
+                        <textarea id="ghiChu" class="form-control" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="btnHuy" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Hủy
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Lưu hóa đơn
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <h2><i class="fas fa-list"></i> Danh sách hóa đơn</h2>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Tìm kiếm hóa đơn...">
+                        <button id="btnSearch" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="hoa-don-table">
+                        <thead>
+                            <tr>
+                                <th>Mã HĐ</th>
+                                <th>Khách hàng</th>
+                                <th>Phòng</th>
+                                <th>Ngày lập</th>
+                                <th>Tổng tiền</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hoaDonBody">
+                            <!-- Dữ liệu sẽ được thêm bằng JavaScript -->
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    <div class="empty-state">
+                                        <i class="fas fa-file-invoice"></i>
+                                        <p>Không có dữ liệu hóa đơn</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-footer">
+                    <div class="pagination">
+                        <button id="btnPrev" class="btn btn-secondary" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span id="pageInfo">Trang 1/1</span>
+                        <button id="btnNext" class="btn btn-secondary" disabled>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal Xác nhận xóa -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3><i class="fas fa-exclamation-triangle"></i> Xác nhận</h3>
+            <p>Bạn có chắc chắn muốn xóa hóa đơn này?</p>
+            <div class="modal-actions">
+                <button id="btnCancel" class="btn btn-secondary">Hủy</button>
+                <button id="btnConfirmDelete" class="btn btn-danger">Xóa</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/Hoa_Don.js"></script>
+</body>
+</html>

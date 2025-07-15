@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xuất Excel - Quản lý khách sạn</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/Xuat_Excel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Hotel Management</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="Dashboard.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+                <li><a href="Danh_Sach.html"><i class="fas fa-list"></i> Danh sách phòng</a></li>
+                <li><a href="Dat_Phong.html"><i class="fas fa-calendar-check"></i> Đặt phòng</a></li>
+                <li><a href="Hoa_Don.html"><i class="fas fa-file-invoice"></i> Hóa đơn</a></li>
+                <li><a href="Thong_Ke.html"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
+                <li class="active"><a href="Xuat_Excel.html"><i class="fas fa-file-export"></i> Xuất Excel</a></li>
+                <li><a href="Danh_Muc.html"><i class="fas fa-th-list"></i> Danh mục</a></li>
+            </ul>
+            <div class="user-info">
+                <span id="username">Admin</span>
+                <a href="Xac_Thuc.html" class="logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="header-actions">
+                <h1><i class="fas fa-file-export"></i> Xuất dữ liệu ra Excel</h1>
+                <div class="export-actions">
+                    <button id="btnExportAll" class="btn btn-primary" onclick="exportToExcel('all')">
+                        <i class="fas fa-file-excel"></i> Xuất tất cả
+                    </button>
+                </div>
+            </div>
+
+            <div class="export-options">
+                <div class="export-card">
+                    <div class="export-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <div class="export-details">
+                        <h3>Danh sách phòng</h3>
+                        <p>Xuất dữ liệu danh sách phòng hiện có trong hệ thống</p>
+                        <button class="btn btn-outline" onclick="exportToExcel('rooms')">
+                            <i class="fas fa-download"></i> Xuất phòng
+                        </button>
+                    </div>
+                </div>
+
+                <div class="export-card">
+                    <div class="export-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <div class="export-details">
+                        <h3>Hóa đơn</h3>
+                        <p>Xuất dữ liệu các hóa đơn theo khoảng thời gian</p>
+                        <div class="date-range">
+                            <input type="date" id="startDate" class="form-control">
+                            <span>đến</span>
+                            <input type="date" id="endDate" class="form-control">
+                        </div>
+                        <button class="btn btn-outline" onclick="exportToExcel('invoices')">
+                            <i class="fas fa-download"></i> Xuất hóa đơn
+                        </button>
+                    </div>
+                </div>
+
+                <div class="export-card">
+                    <div class="export-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="export-details">
+                        <h3>Khách hàng</h3>
+                        <p>Xuất danh sách khách hàng và thông tin liên hệ</p>
+                        <button class="btn btn-outline" onclick="exportToExcel('customers')">
+                            <i class="fas fa-download"></i> Xuất khách hàng
+                        </button>
+                    </div>
+                </div>
+
+                <div class="export-card">
+                    <div class="export-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="export-details">
+                        <h3>Báo cáo doanh thu</h3>
+                        <p>Xuất báo cáo doanh thu theo tháng/quý/năm</p>
+                        <select id="reportType" class="form-control">
+                            <option value="monthly">Theo tháng</option>
+                            <option value="quarterly">Theo quý</option>
+                            <option value="yearly">Theo năm</option>
+                        </select>
+                        <button class="btn btn-outline" onclick="exportToExcel('revenue')" style="margin-top: 10px;">
+                            <i class="fas fa-download"></i> Xuất báo cáo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-table"></i> Xem trước dữ liệu</h2>
+                    <div class="preview-actions">
+                        <select id="previewDataType" class="form-control" onchange="updatePreview()">
+                            <option value="rooms">Danh sách phòng</option>
+                            <option value="invoices">Hóa đơn</option>
+                            <option value="customers">Khách hàng</option>
+                            <option value="revenue">Doanh thu</option>
+                        </select>
+                        <button id="btnRefresh" class="btn btn-secondary" onclick="updatePreview()">
+                            <i class="fas fa-sync-alt"></i> Làm mới
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table id="previewTable" class="export-preview">
+                        <thead>
+                            <tr>
+                                <th>Mã</th>
+                                <th>Tên</th>
+                                <th>Loại</th>
+                                <th>Trạng thái</th>
+                                <th>Giá (VNĐ/đêm)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="previewTableBody">
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <div class="empty-state">
+                                        <i class="fas fa-table"></i>
+                                        <p>Chọn loại dữ liệu để xem trước</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-footer">
+                    <div class="pagination">
+                        <button id="btnPrev" class="btn btn-secondary" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span id="pageInfo">Trang 1/1</span>
+                        <button id="btnNext" class="btn btn-secondary" disabled>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Đang xuất dữ liệu...</p>
+    </div>
+    
+    <script src="js/Xuat_Excel.js"></script>
+</body>
+</html>
+          <td>7</td>
+          <td>8.200.000</td>
+        </tr>
+        <tr>
+          <td>05/2025</td>
+          <td>18</td>
+          <td>22.500.000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="js/Xuat_Excel.js"></script>
+</body>
+</html>

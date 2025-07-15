@@ -1,0 +1,33 @@
+# version: '3.9'
+
+services:
+  db:
+    image: mysql:8.0
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: qtdl_database
+      MYSQL_USER: qtdl_user
+      MYSQL_PASSWORD: qtdl1234
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: /app/entrypoint.sh
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=3306
+      - DATABASE_USER=qtdl_user
+      - DATABASE_PASSWORD=qtdl1234
+      - DATABASE_NAME=qtdl_database

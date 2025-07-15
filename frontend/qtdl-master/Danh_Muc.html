@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục - Quản lý khách sạn</title>
+    <link rel="stylesheet" href="css/Danh_Muc.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Hotel Management</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="Dashboard.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+                <li><a href="Danh_Sach.html"><i class="fas fa-list"></i> Danh sách phòng</a></li>
+                <li><a href="Dat_Phong.html"><i class="fas fa-calendar-check"></i> Đặt phòng</a></li>
+                <li><a href="Hoa_Don.html"><i class="fas fa-file-invoice"></i> Hóa đơn</a></li>
+                <li><a href="Thong_Ke.html"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
+                <li class="active"><a href="Danh_Muc.html"><i class="fas fa-th-list"></i> Danh mục</a></li>
+                <li><a href="Xuat_Excel.html"><i class="fas fa-file-export"></i> Xuất Excel</a></li>
+            </ul>
+            <div class="user-info">
+                <span id="username">Admin</span>
+                <a href="Xac_Thuc.html" class="logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <h1>Danh mục quản lý</h1>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="accounts">Tài khoản</button>
+                <button class="tab-btn" data-tab="employees">Nhân viên</button>
+                <button class="tab-btn" data-tab="customers">Khách hàng</button>
+                <button class="tab-btn" data-tab="room-types">Loại phòng</button>
+                <button class="tab-btn" data-tab="services">Dịch vụ</button>
+                <button class="tab-btn" data-tab="rooms">Phòng</button>
+                <button class="tab-btn" data-tab="service-usage">Sử dụng dịch vụ</button>
+            </div>
+
+            <div class="tab-content">
+                <!-- Tài khoản -->
+                <div id="accounts" class="tab-pane active">
+                    <div class="table-header">
+                        <h3>Quản lý tài khoản</h3>
+                        <button class="btn-add" id="addAccountBtn"><i class="fas fa-plus"></i> Thêm mới</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="accountsTable">
+                            <thead>
+                                <tr>
+                                    <th>Mã tài khoản</th>
+                                    <th>Tên đăng nhập</th>
+                                    <th>Mật khẩu</th>
+                                    <th>Email</th>
+                                    <th>Mã nhân viên</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Nhân viên -->
+                <div id="employees" class="tab-pane">
+                    <div class="table-header">
+                        <h3>Quản lý nhân viên</h3>
+                        <button class="btn-add" id="addEmployeeBtn"><i class="fas fa-plus"></i> Thêm mới</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="employeesTable">
+                            <thead>
+                                <tr>
+                                    <th>Mã NV</th>
+                                    <th>Họ tên</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Vai trò</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Khách hàng -->
+                <div id="customers" class="tab-pane">
+                    <div class="table-header">
+                        <h3>Quản lý khách hàng</h3>
+                        <button class="btn-add" id="addCustomerBtn"><i class="fas fa-plus"></i> Thêm mới</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="customersTable">
+                            <thead>
+                                <tr>
+                                    <th>Mã KH</th>
+                                    <th>Tên KH</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Loại phòng -->
+                <div id="room-types" class="tab-pane">
+                    <div class="table-header">
+                        <h3>Quản lý loại phòng</h3>
+                        <button class="btn-add" id="addRoomTypeBtn"><i class="fas fa-plus"></i> Thêm mới</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="roomTypesTable">
+                            <thead>
+                                <tr>
+                                    <th>Mã loại</th>
+                                    <th>Tên loại phòng</th>
+                                    <th>Giá phòng</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Dịch vụ -->
+                <div id="services" class="tab-pane">
+                    <div class="table-header">
+                        <h3>Quản lý dịch vụ</h3>
+                        <button class="btn-add" id="addServiceBtn"><i class="fas fa-plus"></i> Thêm mới</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="servicesTable">
+                            <thead>
+                                <tr>
+                                    <th>Mã dịch vụ</th>
+                                    <th>Tên dịch vụ</th>
+                                    <th>Đơn giá</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Phòng -->
+                <div id="rooms" class="tab-pane">
+                    <div class="table-header">
+                        <h3>Quản lý phòng</h3>
+                        <button class="btn-add" id="addRoomBtn"><i class="fas fa-plus"></i> Thêm mới</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="roomsTable">
+                            <thead>
+                                <tr>
+                                    <th>Mã phòng</th>
+                                    <th>Loại phòng</th>
+                                    <th>Số phòng</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Sử dụng dịch vụ -->
+                <div id="service-usage" class="tab-pane">
+                    <div class="table-header">
+                        <h3>Quản lý sử dụng dịch vụ</h3>
+                        <button class="btn-add" id="addServiceUsageBtn"><i class="fas fa-plus"></i> Thêm mới</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="serviceUsageTable">
+                            <thead>
+                                <tr>
+                                    <th>Mã SDDV</th>
+                                    <th>Khách hàng</th>
+                                    <th>Dịch vụ</th>
+                                    <th>Số lượng</th>
+                                    <th>Ngày sử dụng</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Add/Edit Forms -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Thêm mới</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Form will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/Danh_Muc.js"></script>
+</body>
+</html>

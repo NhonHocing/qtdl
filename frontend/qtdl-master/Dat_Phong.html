@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt phòng - Quản lý khách sạn</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/Dat_Phong.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Hotel Management</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="Dashboard.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+                <li><a href="Danh_Sach.html"><i class="fas fa-list"></i> Danh sách phòng</a></li>
+                <li class="active"><a href="Dat_Phong.html"><i class="fas fa-calendar-check"></i> Đặt phòng</a></li>
+                <li><a href="Hoa_Don.html"><i class="fas fa-file-invoice"></i> Hóa đơn</a></li>
+                <li><a href="Thong_Ke.html"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
+                <li><a href="Danh_Muc.html"><i class="fas fa-th-list"></i> Danh mục</a></li>
+                <li><a href="Xuat_Excel.html"><i class="fas fa-file-export"></i> Xuất Excel</a></li>
+            </ul>
+            <div class="user-info">
+                <span id="username">Admin</span>
+                <a href="Xac_Thuc.html" class="logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="header-actions">
+                <h1><i class="fas fa-calendar-check"></i> Đặt phòng</h1>
+                <button id="btnRemoveExpired" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i> Xóa đơn quá hạn
+                </button>
+            </div>
+
+            <div class="form-container" id="bookingFormContainer">
+                <h2><i class="fas fa-edit"></i> <span id="formTitle">Thông tin đặt phòng</span></h2>
+                <form id="bookingForm">
+                    <input type="hidden" id="editingIndex" />
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="maNV">Mã nhân viên</label>
+                            <input type="text" id="maNV" class="form-control" readonly />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="maKH">Mã khách hàng</label>
+                            <select id="maKH" class="form-control" required>
+                                <option value="">Chọn khách hàng</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ngayThue">Ngày thuê</label>
+                            <input type="date" id="ngayThue" class="form-control" readonly required />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ngayNhan">Ngày nhận</label>
+                            <input type="date" id="ngayNhan" class="form-control" required />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ngayTra">Ngày trả</label>
+                            <input type="date" id="ngayTra" class="form-control" required />
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="trangThai">Trạng thái</label>
+                            <input type="text" id="trangThai" class="form-control" value="Đã đặt" readonly />
+                        </div>
+                    </div>
+
+                    <div class="form-row">                       
+                        <div class="form-group">
+                            <label for="maPhong">Mã phòng</label>
+                            <select id="maPhong" class="form-control" required>
+                                <option value="">Chọn phòng</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="btnHuy" class="btn btn-secondary">
+                            Hủy
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Lưu thông tin
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <h2><i class="fas fa-list"></i> Danh sách đặt phòng</h2>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="booking-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã KH</th>
+                                <th>Ngày thuê</th>
+                                <th>Ngày nhận</th>
+                                <th>Ngày trả</th>
+                                <th>Mã phòng</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingList">
+                            <!-- Dữ liệu sẽ được thêm bằng JavaScript -->
+                            <tr>
+                                <td colspan="8" class="text-center">
+                                    <p>Không có dữ liệu đặt phòng</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/Dat_Phong.js"></script>
+</body>
+</html>

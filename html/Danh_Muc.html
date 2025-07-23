@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục - Quản lý khách sạn</title>
+    <link rel="stylesheet" href="../css/Danh_Muc.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Quản lý khách sạn</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+                <li><a href="Danh_Sach.html"><i class="fas fa-list"></i> Danh sách phòng</a></li>
+                <li><a href="Dat_Phong.html"><i class="fas fa-calendar-check"></i> Đặt phòng</a></li>
+                <li><a href="Hoa_Don.html"><i class="fas fa-file-invoice"></i> Hóa đơn</a></li>
+                <li><a href="Thong_Ke.html"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
+                <li class="active"><a href="Danh_Muc.html"><i class="fas fa-th-list"></i> Danh mục</a></li>
+                <li><a href="Xuat_Excel.html"><i class="fas fa-file-export"></i> Xuất Excel</a></li>
+            </ul>
+            <div class="user-info">
+                <span id="username">Admin</span>
+                <a href="Xac_Thuc.html" class="logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="top-right-logo">
+                <img src="../img/logo.png" alt="Logo" class="logo-image">
+            </div>
+            <h1>Danh mục</h1>
+
+            <div class="table-header">
+                <h3>Quản lý danh mục</h3>
+                <button class="btn-add" id="addCategoryBtn"><i class="fas fa-plus"></i> Thêm mới</button>
+            </div>
+            <div class="table-responsive">
+                <table id="categoriesTable">
+                    <thead>
+                        <tr>
+                            <th>Mã danh mục</th>
+                            <th>Tên danh mục</th>
+                            <th>Mô tả</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Thêm mới</h2>
+                    <span class="close">×</span>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Form will be loaded here dynamically -->
+                </div>
+            </div>
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/Danh_Muc.js"></script>
+</body>
+</html>

@@ -1,23 +1,27 @@
 <?php
 class Database {
     private $host = "localhost";
-    private $db_name = "ct467_project";
-    private $username = "root";
-    private $password = "161163Nhon@";
+    private $port = "5432"; // Cổng mặc định của PostgreSQL
+    private $db_name = "gheday"; // tên CSDL 
+    private $username = "postgres";     // tài khoản PostgreSQL
+    private $password = "1234";  // mật khẩu 
     public $conn;
 
     public function getConnection() {
         $this->conn = null;
         try {
             $this->conn = new PDO(
-                "mysql:host={$this->host};dbname={$this->db_name};charset=utf8mb4",
+                "pgsql:host={$this->host};port={$this->port};dbname={$this->db_name}",
                 $this->username,
                 $this->password
             );
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $exception) {
-            echo "Kết nối thất bại: " . $exception->getMessage();
+            // echo "Kết nối PostgreSQL thành công!";
+        } catch (PDOException $e) {
+            echo "Kết nối thất bại: " . $e->getMessage();
+            exit();
         }
+
         return $this->conn;
     }
 }

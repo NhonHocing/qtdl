@@ -1,0 +1,165 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Containers */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+/* Header sections */
+.futa-header {
+    background: linear-gradient(to right, #ff5f00, #e60000);
+    color: white;
+    font-size: 15px;
+}
+
+/* Top */
+.header-top {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.header-top .left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.flag, .app-icon {
+    width: 20px;
+    height: 20px;
+}
+.app-download {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Right */
+.header-top .right .login-btn {
+    background: white;
+    color: #e60000;
+    padding: 5px 15px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.header-top .right .login-btn:hover {
+    background: #f1f1f1;
+}
+
+/* Bottom */
+.header-bottom {
+    padding: 5px 0;
+    background-color: #7494ec;
+}
+.logo img {
+    height: 50px;
+}
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin-left: auto; /* Đẩy ul sát bên phải */
+    justify-content: flex-end; /* Căn các mục bên trong sát phải */
+    align-items: center; /*cùng hàng*/
+}
+.main-nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding-bottom: 3px;
+    transition: border-bottom 0.3s;
+}
+.main-nav ul li a:hover {
+    border-bottom: 2px solid white;
+}
+
+.banner-header {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLEH6ag9rf2gbxROl1CyyXOMEeKvxg7w9ofw&s");
+    background-size: cover;
+    background-position: center;
+    height: 200px; /* tùy chiều cao ảnh */
+    position: relative;
+}
+
+.menu {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    color: white;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* ảnh lớn */
+.hero-header {
+    background-image: url("../img/anh_tren_cao.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* nút đăng nhập đăng ký */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 5px 0;
+  }
+  
+  .btn-auth {
+    display: inline-block;
+    padding: 10px 10px;
+    border: 2px solid blue;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: blue;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-auth:hover {
+    background-color: blue;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  

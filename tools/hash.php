@@ -1,8 +1,8 @@
 <?php
 $passwords = [
-    'nlcs' => 'hocky3',
-    'nlcn' => 'hocky1',
-    'luanvan' => 'hocky2'
+    'cnweb' => '123456',
+    'hoangnhon' => '123456',
+    'thuykha' => '123456'
 ];
 
 foreach ($passwords as $username => $plain) {

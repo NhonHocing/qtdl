@@ -1,7 +1,4 @@
-Options -MultiViews
-RewriteEngine On
-RewriteBase /my_app/public/
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+# Cấu hình cho Nginx
+# Nginx không đọc .htaccess, cần cấu hình trong nginx.conf
+# File này chỉ để tham khảo
 
